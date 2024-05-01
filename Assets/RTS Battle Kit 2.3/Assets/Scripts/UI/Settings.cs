@@ -102,7 +102,7 @@ public class Settings : MonoBehaviour {
 		VsyncDropdown.GetComponent<Dropdown>().value = PlayerPrefs.GetInt("Vsync");
 		
 		//Set texture quality and show it in the dropdown list
-		QualitySettings.masterTextureLimit = PlayerPrefs.GetInt("textureQuality");
+		QualitySettings.globalTextureMipmapLimit = PlayerPrefs.GetInt("textureQuality");
 		textureQualityDropdown.GetComponent<Dropdown>().value = PlayerPrefs.GetInt("textureQuality");
 		
 		//Set ambient light to a new color with playerprefs and set the slider to the right value
@@ -183,7 +183,7 @@ public class Settings : MonoBehaviour {
 	QualitySettings.vSyncCount = PlayerPrefs.GetInt("Vsync");
 	VsyncDropdown.GetComponent<Dropdown>().value = PlayerPrefs.GetInt("Vsync");
 		
-	QualitySettings.masterTextureLimit = PlayerPrefs.GetInt("textureQuality");
+	QualitySettings.globalTextureMipmapLimit = PlayerPrefs.GetInt("textureQuality");
 	textureQualityDropdown.GetComponent<Dropdown>().value = PlayerPrefs.GetInt("textureQuality");
 	
 	if(PlayerPrefs.GetInt("anisotropicFiltering") == 0){
@@ -238,7 +238,7 @@ public class Settings : MonoBehaviour {
 	//This happens when you click the Texture Quality dropdown list (again saves clicked option and uses it)
 	public void TextureQuality(int textureQuality){
     PlayerPrefs.SetInt("textureQuality", textureQuality);
-	QualitySettings.masterTextureLimit = textureQuality;
+	QualitySettings.globalTextureMipmapLimit = textureQuality;
 	}
 	
 	//This happens when you click the BlendWeights dropdown list (again saves clicked option and uses it)
@@ -383,7 +383,7 @@ public class Settings : MonoBehaviour {
 			PlayerPrefs.SetInt("QualityLevel", QualitySettings.GetQualityLevel());
 			PlayerPrefs.SetInt("AntiAliasing", QualitySettings.antiAliasing);
 			PlayerPrefs.SetInt("Vsync", QualitySettings.vSyncCount);
-			PlayerPrefs.SetInt("textureQuality", QualitySettings.masterTextureLimit);
+			PlayerPrefs.SetInt("textureQuality", QualitySettings.globalTextureMipmapLimit);
 			PlayerPrefs.SetFloat("ambientLight", brightnessSlider.value);
 			PlayerPrefs.SetFloat("volume", volumeSlider.value);
 			PlayerPrefs.SetInt("shadowDistance", (int)shadowDistanceSlider.value);
